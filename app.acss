@@ -1,3 +1,7 @@
 page {
   background: #f7f7f7;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+:root {
+  --claro-color: #e52a1b;
 }
