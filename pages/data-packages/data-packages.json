@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "loading-component":"/components/loading-component/loading-component",
+    "arrow-button": "/components/arrow-button/arrow-button",
+    "card-button": "/components/card-button/card-button",
+    "tabs": "antd-mini/es/Tabs/index"
+  },
+  "styleIsolation": "apply-shared",
+  "defaultTitle": "Paquete de datos"
+}

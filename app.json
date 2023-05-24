@@ -1,9 +1,18 @@
 {
   "subPackageBuildType": "shared",
   "pages": [
+    
+    "pages/data-packages/data-packages",
+    "pages/management-packages/management-packages",
+    "pages/data-packages/offers/offers",
+    
     "pages/index/index"
+    
   ],
   "window": {
-    "defaultTitle": "My App"
+    "defaultTitle": "SuperApp Claro",
+    "titleBarColor": "#121D24",
+    "gestureBack": "YES",
+    "showTitleLoading": "YES"
   }
 }

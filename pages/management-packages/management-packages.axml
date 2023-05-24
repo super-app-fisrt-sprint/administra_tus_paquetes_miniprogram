@@ -1,0 +1,15 @@
+<view class="packages container">
+  <view class="page-main">
+    <rich-text nodes="{{nodes}}" class="header-title"></rich-text>
+    <view class="h4 claro-gray-text title-description" >
+     Para que continues tu navegacion
+    </view>
+    <view class="title-services">
+      Selecciona tus paquetes de datos y administrarlos facilmente aquí.
+    </view>
+    <view class="container-items">
+      <arrow-button onTap="onNavigate" imgSrc="{{srcImge}}" iconArrowSrc="{{arrowImage}}">Datos</arrow-button>
+    </view>
+  </view>
+
+</view>

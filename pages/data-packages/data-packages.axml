@@ -1,0 +1,101 @@
+<view class="container">
+
+    <tabs
+      items="{{items}}"
+      current="{{current}}"
+      onChange="onChange"
+    >
+    <swiper
+      current="{{current}}"
+      autoplay="{{false}}"
+      vertical="{{false}}"
+      circular="{{false}}"
+      onChange="onSwipeChange"
+    >
+      <swiper-item a:for="{{ items }}">
+        <view class="content">
+          <view class="container-item border-botton-container">
+            <view style="font-weight: bold;">
+              <text number-of-lines="1">Compensar</text>
+            </view>
+            <view style="color:var(--claro-color)">
+              {{nit}}
+            </view>
+          </view>
+          <view class="container-item content container-text-bold">
+          <view class="item2">
+            <view class="test-numero-linea">
+              <image id="icon-phone" mode="scaleToFill" src="/assets/icons/roaming/phone-roaming.svg" />
+              <view style="font-weight: bold;">
+                Número de línea
+              </view>
+            </view>
+            <view style="font-weight: bold;">
+              {{lineNumber}}
+            </view>
+          </view>
+          <view class="title-services">{{item.content}}</view>
+          <view class="content-main" a:if="{{ current === 0 }}">
+            <arrow-button
+              onTap="onNavigate"
+              style="background:#121D24; color: #fff"
+              imgSrc="{{ iconPackage }}"
+           >
+            {{packages}}
+            </arrow-button>
+          </view>
+        </view>
+        </view>
+      </swiper-item>
+     </swiper>
+    </tabs>
+    <!-- <view slot="title" onTap="onTap" slot-scope="item">
+      {{item.value.title}}
+    </view>
+    <view slot="content">
+    {{item.content}}
+    </view> -->
+    <!-- <view a:for="{{ tabs }}" class="item">  
+      <view class="title" id="tab-item-{{index}}">{{tab.title}}</view>
+      <view>
+        {{tab.content}}
+      </view>
+     </view> -->
+  
+  
+  
+  <view class="container-item content container-text-bold">
+    <loading-component a:if="{{showLoading}}"></loading-component>
+    <view class="item2">
+      <view class="test-numero-linea">
+        <image id="icon-phone" mode="scaleToFill" src="/assets/icons/roaming/phone-roaming.svg" />
+        <view style="font-weight: bold;">
+          Número de línea
+        </view>
+      </view>
+      <view style="font-weight: bold;">
+        {{lineNumber}}
+      </view>
+    </view>
+    <view class="title-services">
+      Paquete adquirido vigente
+    </view>
+    <view>
+      <!-- <text>{{ packages }}</text> -->
+      <arrow-button
+         onTap="onNavigate"
+         style="background:#121D24; color: #fff"
+         imgSrc="{{ iconPackage }}"
+      >
+        {{packages}}
+      </arrow-button>
+
+      <view class="card-item">
+        <view>Datos Adicional</view>
+        <view><text>$8900</text></view>
+        
+      </view>
+    </view>
+    
+  </view>
+</view>
