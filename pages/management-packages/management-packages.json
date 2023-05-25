@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "arrow-button": "/components/arrow-button/arrow-button"
+  },
+  "styleIsolation": "apply-shared",
+  "defaultTitle": "Administrar paquetes"
+}
