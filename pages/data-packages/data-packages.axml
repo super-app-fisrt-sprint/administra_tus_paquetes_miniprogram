@@ -15,6 +15,7 @@
       <swiper-item a:for="{{ items }}">
         <view class="content">
           <view class="container-item border-botton-container">
+            <loading-component a:if="{{showLoading}}"></loading-component>
             <view style="font-weight: bold;">
               <text number-of-lines="1">Compensar</text>
             </view>
@@ -34,8 +35,9 @@
               {{lineNumber}}
             </view>
           </view>
-          <view class="title-services">{{item.content}}</view>
+          
           <view class="content-main" a:if="{{ current === 0 }}">
+            <view class="title-services">{{item.content}}</view>
             <arrow-button
               onTap="onNavigate"
               style="background:#121D24; color: #fff"
@@ -43,6 +45,40 @@
            >
             {{packages}}
             </arrow-button>
+          </view>
+          <view class="content-main" a:if="{{ current === 1 }}">
+            <view class="container-item content container-text-bold">
+              <rich-text nodes="{{nodes}}" class="header-title"></rich-text>
+              <view class="h4 claro-gray-text title-description">
+               que Claro tiene disponibles para tu negocio
+              </view>
+            </view>
+
+            <view class="featuredPackageContainer">
+              <view class="featuredPackageContainerContent">
+                <view>
+                  <text class="packageName"> {{ selectedPackage.packageName }}</text>
+                </view>
+                <view class="packageValueContainer">
+                  <text class="packageValue">${{ selectedPackage.packageValue }}</text>
+                  <text class="packageValueText">Costo paquete</text>
+                </view>
+                <view>
+                  <text class="packageDescriptionButton" onTap="openPackageDescription">
+                    Descripción del paquete
+                  </text>
+                </view>
+                <view>
+                  <text class="availabilityText">Disponibilidad:</text>
+                </view>
+                <block a:for="{{ selectedPackage.packageCountries }}" item="*item">
+                  <view class="availableCountry">
+                    <text class="availableCountryText">{{ item.nameCountry }}</text>
+                  </view>
+                </block>
+              </view>
+            </view>
+            
           </view>
         </view>
         </view>
@@ -61,41 +97,4 @@
         {{tab.content}}
       </view>
      </view> -->
-  
-  
-  
-  <view class="container-item content container-text-bold">
-    <loading-component a:if="{{showLoading}}"></loading-component>
-    <view class="item2">
-      <view class="test-numero-linea">
-        <image id="icon-phone" mode="scaleToFill" src="/assets/icons/roaming/phone-roaming.svg" />
-        <view style="font-weight: bold;">
-          Número de línea
-        </view>
-      </view>
-      <view style="font-weight: bold;">
-        {{lineNumber}}
-      </view>
-    </view>
-    <view class="title-services">
-      Paquete adquirido vigente
-    </view>
-    <view>
-      <!-- <text>{{ packages }}</text> -->
-      <arrow-button
-         onTap="onNavigate"
-         style="background:#121D24; color: #fff"
-         imgSrc="{{ iconPackage }}"
-      >
-        {{packages}}
-      </arrow-button>
-
-      <view class="card-item">
-        <view>Datos Adicional</view>
-        <view><text>$8900</text></view>
-        
-      </view>
-    </view>
-    
-  </view>
 </view>

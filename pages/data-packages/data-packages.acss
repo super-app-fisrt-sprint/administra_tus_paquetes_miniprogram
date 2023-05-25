@@ -3,8 +3,6 @@
 }
 
 .container {
-  width: 90%;
-  height: 700px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -21,6 +19,11 @@
   padding-bottom: 10px;
   flex-direction: row;
 } 
+
+.ant-tabs-content {
+  padding: 0 10px;
+  height: 100vh;
+}
 
 .container-item.content {
   flex-direction: column;
@@ -64,6 +67,32 @@
 }
 
 .h4 {
-  font-weight: bold;
-  font-size: 32rpx;
+  font-weight: 500;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.header-title {
+  text-align: center;
+}
+
+.featuredPackageContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-style: solid;
+  border-color: #e37971;
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: 0 10px 6px -6px #777;
+
+  width: 100%;
+  height: 200px;
+  margin-top: 30px;
+}
+
+.featuredPackageContainerContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

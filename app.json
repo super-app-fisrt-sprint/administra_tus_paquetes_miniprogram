@@ -1,9 +1,9 @@
 {
   "subPackageBuildType": "shared",
   "pages": [
-    
-    "pages/data-packages/data-packages",
     "pages/management-packages/management-packages",
+    "pages/data-packages/data-packages",
+    
     "pages/data-packages/offers/offers",
     
     "pages/index/index"

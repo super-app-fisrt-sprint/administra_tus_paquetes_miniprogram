@@ -10,6 +10,120 @@ Page({
     packages: "",
     showLoading : false,
     iconPackage: "/assets/icons/redeem.svg",
+    paquetes: [
+      {
+          "icono": "X.png",
+          "nombreRed": "X",
+          "aplicaPagoContraSaldo": "false",
+          "aplicaPagoEnLinea": "true",
+          "cantidadDatos": "5GB",
+          "cantidadDatosRecurrente": "",
+          "cantidadSMS": "No Aplica",
+          "cantidadSMSRecurrente": "",
+          "cantidadVoz": "No Aplica",
+          "cantidadVozRecurrente": "",
+          "catalogoPaqueteID": "100",
+          "catalogoRedSocial": [],
+          "categoriaPaqueteID": "1",
+          "codigoPaqueteGW": "50077",
+          "codigoPaqueteRecurrente": "",
+          "codigoPaqueteSaldo": "31198",
+          "descripcion": "Paquete Adicional de Datos 5GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 15 días.",
+          "descripcionRecurrente": "",
+          "esPaqueteRecurrente": "false",
+          "nombre": "Datos Adicional 5GB",
+          "nombreRecurrente": "",
+          "precio": "8900",
+          "tipoPaqueteID": "1",
+          "tipoProductoID": "1",
+          "vigencia": "0",
+          "infoXMB": []
+      },
+      {
+          "icono": "X.png",
+          "nombreRed": "X",
+          "aplicaPagoContraSaldo": "false",
+          "aplicaPagoEnLinea": "true",
+          "cantidadDatos": "10GB",
+          "cantidadDatosRecurrente": "",
+          "cantidadSMS": "No Aplica",
+          "cantidadSMSRecurrente": "",
+          "cantidadVoz": "No Aplica",
+          "cantidadVozRecurrente": "",
+          "catalogoPaqueteID": "101",
+          "catalogoRedSocial": [],
+          "categoriaPaqueteID": "1",
+          "codigoPaqueteGW": "50078",
+          "codigoPaqueteRecurrente": "",
+          "codigoPaqueteSaldo": "31199",
+          "descripcion": "Paquete Adicional de Datos 10GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 30 días. ",
+          "descripcionRecurrente": "",
+          "esPaqueteRecurrente": "false",
+          "nombre": "Datos Adicional 10GB",
+          "nombreRecurrente": "",
+          "precio": "15900",
+          "tipoPaqueteID": "1",
+          "tipoProductoID": "1",
+          "vigencia": "0",
+          "infoXMB": []
+      },
+      {
+          "icono": "X.png",
+          "nombreRed": "X",
+          "aplicaPagoContraSaldo": "false",
+          "aplicaPagoEnLinea": "true",
+          "cantidadDatos": "15GB",
+          "cantidadDatosRecurrente": "",
+          "cantidadSMS": "No Aplica",
+          "cantidadSMSRecurrente": "",
+          "cantidadVoz": "No Aplica",
+          "cantidadVozRecurrente": "",
+          "catalogoPaqueteID": "102",
+          "catalogoRedSocial": [],
+          "categoriaPaqueteID": "1",
+          "codigoPaqueteGW": "50079",
+          "codigoPaqueteRecurrente": "",
+          "codigoPaqueteSaldo": "31200",
+          "descripcion": "Paquete Adicional de Datos 15GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 30 días.",
+          "descripcionRecurrente": "",
+          "esPaqueteRecurrente": "false",
+          "nombre": "Datos Adicional 15GB",
+          "nombreRecurrente": "",
+          "precio": "24900",
+          "tipoPaqueteID": "1",
+          "tipoProductoID": "1",
+          "vigencia": "0",
+          "infoXMB": []
+      },
+      {
+          "icono": "X.png",
+          "nombreRed": "X",
+          "aplicaPagoContraSaldo": "false",
+          "aplicaPagoEnLinea": "true",
+          "cantidadDatos": "30GB",
+          "cantidadDatosRecurrente": "",
+          "cantidadSMS": "No Aplica",
+          "cantidadSMSRecurrente": "",
+          "cantidadVoz": "No Aplica",
+          "cantidadVozRecurrente": "",
+          "catalogoPaqueteID": "103",
+          "catalogoRedSocial": [],
+          "categoriaPaqueteID": "1",
+          "codigoPaqueteGW": "50081",
+          "codigoPaqueteRecurrente": "",
+          "codigoPaqueteSaldo": "31219",
+          "descripcion": "Paquete Adicional de Datos 30GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 30 días.",
+          "descripcionRecurrente": "",
+          "esPaqueteRecurrente": "false",
+          "nombre": "Datos Adicional 30GB",
+          "nombreRecurrente": "",
+          "precio": "39900",
+          "tipoPaqueteID": "1",
+          "tipoProductoID": "1",
+          "vigencia": "0",
+          "infoXMB": []
+      }
+  ],
     items: [
       {
         title: 'Mis paquetes',
@@ -19,7 +133,33 @@ Page({
         title: 'Ofertas para tí',
         content: "Paquete adquirido asdfsad"
       }
-    ]
+    ],
+    nodes: [
+      {
+        name: "span",
+        attrs: {
+          style: "color: #DB493E; font-weight: bold; font-size: 0.48rem;"
+        },
+        children: [
+          {
+            type: "text",
+            text: "Descubre las mejores"
+          }
+        ]
+      },
+      {
+        name: "span",
+        attrs: {
+          style: "color: #4e4e4e; font-weight: bold; font-size: 0.48rem;"
+        },
+        children: [
+          {
+            type: "text",
+            text: " ofertas y promociones"
+          }
+        ]
+      },
+    ],
   },
   onLoad(options) {
     console.log(options)
