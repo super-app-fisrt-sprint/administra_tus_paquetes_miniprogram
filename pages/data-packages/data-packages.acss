@@ -22,7 +22,6 @@
 
 .ant-tabs-content {
   padding: 0 10px;
-  height: 100vh;
 }
 
 .container-item.content {
@@ -78,16 +77,15 @@
 
 .featuredPackageContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   border-style: solid;
   border-color: #e37971;
   border-radius: 5px;
   border-width: 1px;
   box-shadow: 0 10px 6px -6px #777;
-
   width: 100%;
-  height: 200px;
+  height: auto;
   margin-top: 30px;
 }
 
@@ -95,6 +93,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 21px 30px;
 }
 
 .lineNumberText {
@@ -191,4 +190,76 @@
 }
 .x::after {
   transform: rotate(-45deg);
+}
+
+.data-package-price, .data-package-size {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.packageValueContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.itemPackage {
+  width: 37%;
+}
+
+.packageName, .packageValueText {
+  color: #4e4e4e;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.packageValueText {
+  font-size: 11px;
+}
+
+.packageValue {
+  color: #DB493E; 
+  font-weight: bold; 
+  font-size: 0.48rem;
+}
+
+.packageDescriptionButton {
+  color: #03a9f4;
+  font-weight: 400;
+}
+
+.packageProduct {
+  background-image: url('/assets/icons/globalblack.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 61px;
+  height: 26px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.packageSize {
+  width: 61px;
+  height: 26px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.packageDescription {
+  margin: 29px 0;
+}
+
+.data-package-size {
+  width: 76%;
+}
+
+.itemSeparator {
+  width: 2px;
+  background: #f0f0f0;
 }
