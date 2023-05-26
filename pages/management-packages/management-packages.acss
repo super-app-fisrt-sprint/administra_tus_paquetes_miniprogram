@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+.header-title {
+  padding: 60rpx 0 20rpx;
+}
+
+.title-description {
+  padding-bottom: 30rpx;
+  border-bottom: 1px solid gray;
+}
+
+.claro-gray-text {
+  color: #4e4e4e;
+}
+
+.h4 {
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  height: 100vh;
+  padding: 0 30rpx;
+}
+
+.title-services {
+  color: #6e6c6c8c;
+  margin-bottom: 16rpx;
+  padding: 0.5rem 0.1rem 0.2rem;
+  font-size: 0.3rem;
+  text-align: center;
+}
+
+.container-items {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 15rpx;
+}
+
+.packages .btn-arrow {
+  background: #e51d1d;
+  color: white;
+}

@@ -1,0 +1,117 @@
+<view class="container">
+
+    <tabs
+      items="{{items}}"
+      current="{{current}}"
+      onChange="onChange"
+    >
+    <swiper
+      current="{{current}}"
+      autoplay="{{false}}"
+      vertical="{{false}}"
+      circular="{{false}}"
+      onChange="onSwipeChange"
+    >
+      <swiper-item a:for="{{ items }}">
+        <view class="content">
+          <view class="container-item border-botton-container">
+            <loading-component a:if="{{showLoading}}"></loading-component>
+            <view style="font-weight: bold;">
+              <text number-of-lines="1">Compensar</text>
+            </view>
+            <view style="color:var(--claro-color)">
+              {{nit}}
+            </view>
+          </view>
+          <view class="container-item content container-text-bold">
+          <view class="item2">
+            <view class="test-numero-linea">
+              <image id="icon-phone" mode="scaleToFill" src="/assets/icons/roaming/phone-roaming.svg" />
+              <view style="font-weight: bold;">
+                Número de línea
+              </view>
+            </view>
+            <view style="font-weight: bold;">
+              {{lineNumber}}
+            </view>
+          </view>
+          
+          <view class="content-main" a:if="{{ current === 0 }}">
+            <view class="title-services">{{item.content}}</view>
+            <arrow-button
+              onTap="onNavigate"
+              style="background:#121D24; color: #fff"
+              imgSrc="{{ iconPackage }}"
+           >
+            {{packages}}
+            </arrow-button>
+          </view>
+          <view class="content-main" a:if="{{ current === 1 }}">
+            <view class="container-item content container-text-bold">
+              <rich-text nodes="{{nodes}}" class="header-title"></rich-text>
+              <view class="h4 claro-gray-text title-description">
+               que Claro tiene disponibles para tu negocio
+              </view>
+            </view>
+
+            <block a:for="{{offers}}" a:for-index="index" a:for-item="item">
+            <view class="featuredPackageContainer">
+              <view class="featuredPackageContainerContent">
+                <view class="data-package-price">
+                  <view class="itemPackage">
+                    <text class="packageName"> {{item.nombre}} </text>
+                  </view>
+                  <view class="itemSeparator">
+                  </view>
+                  <view class="packageValueContainer itemPackage">
+                    <text class="packageValue">$ {{item.precio}}</text>
+                    <text class="packageValueText">Costo paquete</text>
+                  </view>
+                </view>
+                <view class="packageDescription">
+                  <text class="packageDescriptionButton" onTap="openPackageDescription">
+                    Descripción del paquete
+                  </text>
+                </view>
+                <view class="data-package-size">
+                  <view class="packageProduct">
+                    <text>Datos</text>
+                  </view>
+                  <view class="itemSeparator">
+                  </view>
+                  <view class="packageSize">
+                    <text>{{item.cantidadDatos}}</text>
+                  </view>
+                </view>
+                <block a:for="{{ selectedPackage.packageCountries }}" item="*item">
+                  <view class="availableCountry">
+                    <text class="availableCountryText">{{ item.nameCountry }}</text>
+                  </view>
+                </block>
+              </view>
+              <custom-button
+                text="Otros medios de pago"
+                size="large"
+              >
+              </custom-button>
+            </view>
+            </block>
+          </view>
+        </view>
+        </view>
+      </swiper-item>
+     </swiper>
+    </tabs>
+    <!-- <view slot="title" onTap="onTap" slot-scope="item">
+      {{item.value.title}}
+    </view>
+    <view slot="content">
+    {{item.content}}
+    </view> -->
+    <!-- <view a:for="{{ tabs }}" class="item">  
+      <view class="title" id="tab-item-{{index}}">{{tab.title}}</view>
+      <view>
+        {{tab.content}}
+      </view>
+     </view> -->
+</view>
