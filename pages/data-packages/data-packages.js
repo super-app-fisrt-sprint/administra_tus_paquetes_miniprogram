@@ -50,12 +50,15 @@ Page({
       },
     ],
     showPackageDescription: false,
-    showPaymentPopup: true,
+    showPaymentPopup: false,
+    indexOfferSelected: 0
   },
-  openPackageDescription() {
+  openPackageDescription(event) {
     this.setData({
-      showPackageDescription: true
+      showPackageDescription: true,
+      indexOfferSelected: event.target.dataset.indexOffers
     })
+    console.log("event: ", event)
   },
   closePackageDescriptionPopup() {
     this.setData({
@@ -65,6 +68,12 @@ Page({
   closePaymentPopup() {
     this.setData({
       showPaymentPopup: false
+    })
+  },
+  openPaymentPopup(event) {
+    this.setData({
+      showPaymentPopup: true,
+      indexOfferSelected: event.target.dataset.indexOffers
     })
   },
   openPaymentWebview() {
@@ -103,8 +112,8 @@ Page({
   packagesItems(res) {
     const that = this;
     const packagesItemslist = res.data.response.listaCatalogo.paquetes.map(item => {
-      const { nombre, cantidadDatos, precio } = item;
-      return { nombre, cantidadDatos, precio }
+      const { nombre, cantidadDatos, precio, descripcion } = item;
+      return { nombre, cantidadDatos, precio, descripcion }
     })
     console.log(packagesItemslist)
     this.setData({
