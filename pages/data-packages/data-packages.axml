@@ -54,31 +54,50 @@
               </view>
             </view>
 
-            <view class="featuredPackageContainer">
-              <view class="featuredPackageContainerContent">
-                <view>
-                  <text class="packageName"> {{ selectedPackage.packageName }}</text>
-                </view>
-                <view class="packageValueContainer">
-                  <text class="packageValue">${{ selectedPackage.packageValue }}</text>
-                  <text class="packageValueText">Costo paquete</text>
-                </view>
-                <view>
-                  <text class="packageDescriptionButton" onTap="openPackageDescription">
-                    Descripción del paquete
-                  </text>
-                </view>
-                <view>
-                  <text class="availabilityText">Disponibilidad:</text>
-                </view>
-                <block a:for="{{ selectedPackage.packageCountries }}" item="*item">
-                  <view class="availableCountry">
-                    <text class="availableCountryText">{{ item.nameCountry }}</text>
+            <block a:for="{{offers.length}}" a:for-index="index" a:for-item="item">
+              <view class="featuredPackageContainer">
+                <view class="featuredPackageContainerContent">
+                  <view class="data-package-price">
+                    <view class="itemPackage">
+                      <text class="packageName"> {{offers[item - 1].nombre}} </text>
+                    </view>
+                    <view class="itemSeparator">
+                    </view>
+                    <view class="packageValueContainer itemPackage">
+                      <text class="packageValue">$ {{offers[item - 1].precio}}</text>
+                      <text class="packageValueText">Costo paquete</text>
+                    </view>
                   </view>
-                </block>
+                  <view class="packageDescription">
+                    <text class="packageDescriptionButton" onTap="openPackageDescription" data-indexOffers="{{item}}">
+                      Descripción del paquete
+                    </text>
+                  </view>
+                  <view class="data-package-size">
+                    <view class="packageProduct">
+                      <text>Datos</text>
+                    </view>
+                    <view class="itemSeparator">
+                    </view>
+                    <view class="packageSize">
+                      <text>{{offers[item - 1].cantidadDatos}}</text>
+                    </view>
+                  </view>
+                  <block a:for="{{ selectedPackage.packageCountries }}" item="*item">
+                    <view class="availableCountry">
+                      <text class="availableCountryText">{{ item.nameCountry }}</text>
+                    </view>
+                  </block>
+                </view>
+                <view class="offersButtonTextContainer">
+                  <button type="default" onTap="openPaymentPopup" data-indexOffers="{{item}}" class="offersButton">
+                    <text class="offersButtonText">
+                      Otros medios de pago
+                    </text>  
+                  </button>
+                </view>
               </view>
-            </view>
-            
+            </block>
           </view>
         </view>
         </view>
@@ -97,4 +116,60 @@
         {{tab.content}}
       </view>
      </view> -->
+
+    <modal-accept
+     visible="{{showPackageDescription}}"
+     content="{{offers[indexOfferSelected - 1].descripcion}}"
+     primaryButtonText="Cerrar"
+     onClose="closePackageDescriptionPopup"
+     onPrimaryButtonTap="closePackageDescriptionPopup"
+    />
+    <modal-accept
+     visible="{{showPaymentPopup}}"
+     primaryButtonText="Pagar"
+     onPrimaryButtonTap="openPaymentWebview"
+     onClose="closePaymentPopup"
+    >
+      <view slot="content">
+        <view class="x" onTap="closePaymentPopup">
+        </view>
+        <view>
+          <text>
+            ¿Estás seguro que deseas adquirir el siguiente paquete y agregarlo al número?
+          </text>
+        </view>
+        <view class="lineNumberText">
+          <text>
+            {{lineNumber}}
+          </text>
+        </view>
+        <view class="additionalDataText">
+          <text>
+            Datos Adicional {{offers[indexOfferSelected - 1].cantidadDatos}}
+          </text>
+        </view>
+        <view>
+          <text>Paquetes de Datos.</text>
+        </view>
+        <view class="packageCostContainer">
+          <text class="packageCostText">Costo paquete</text>
+          <text class="packageCostValue">${{offers[indexOfferSelected - 1].precio}}</text>
+        </view>
+        <view class="dataContainer">
+          <view class="dataTextContainer">
+            <image class="dataIcon" src="/assets/icons/datos.svg"/>
+            <text class="dataText">Datos</text>
+          </view>
+          <text class="dataValueText">{{offers[indexOfferSelected - 1].cantidadDatos}}</text>
+        </view>
+        <view class="descriptionContainer">
+          <text class="descriptionTitleText">Descripción</text>
+          <text class="descriptionText">{{offers[indexOfferSelected - 1].descripcion}}</text>
+        </view>
+        <view class="paymentMethodsContainer">
+          <text style="font-weight: bold;">Métodos de pago:</text>
+          <text>Otros medios de pago</text>
+        </view>
+      </view>
+    </modal-accept>
 </view>

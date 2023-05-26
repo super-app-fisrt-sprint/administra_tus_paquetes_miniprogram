@@ -1,3 +1,4 @@
+import { requestApiGetPackagesCatalogue } from "/services/GetCataloguePackages";
 import { requestApiGetCurrentPackageDetail } from "/services/GetCurrentPackageDetail";
 
 Page({
@@ -6,124 +7,12 @@ Page({
     tabIndex: 0,
     nit: "900999998",
     urlPackages: 'https://apiselfservice.co/M3/Empresas/Postpago/GetCurrentPackageDetail/',
+    urlOffers: 'https://apiselfservice.co/api/index.php/v1/soap/ConsultarCatalogoPaqueteRecarga.json',
     lineNumber: getApp().globalData.lineNumber,
     packages: "",
+    offers: [],
     showLoading : false,
     iconPackage: "/assets/icons/redeem.svg",
-    paquetes: [
-      {
-          "icono": "X.png",
-          "nombreRed": "X",
-          "aplicaPagoContraSaldo": "false",
-          "aplicaPagoEnLinea": "true",
-          "cantidadDatos": "5GB",
-          "cantidadDatosRecurrente": "",
-          "cantidadSMS": "No Aplica",
-          "cantidadSMSRecurrente": "",
-          "cantidadVoz": "No Aplica",
-          "cantidadVozRecurrente": "",
-          "catalogoPaqueteID": "100",
-          "catalogoRedSocial": [],
-          "categoriaPaqueteID": "1",
-          "codigoPaqueteGW": "50077",
-          "codigoPaqueteRecurrente": "",
-          "codigoPaqueteSaldo": "31198",
-          "descripcion": "Paquete Adicional de Datos 5GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 15 días.",
-          "descripcionRecurrente": "",
-          "esPaqueteRecurrente": "false",
-          "nombre": "Datos Adicional 5GB",
-          "nombreRecurrente": "",
-          "precio": "8900",
-          "tipoPaqueteID": "1",
-          "tipoProductoID": "1",
-          "vigencia": "0",
-          "infoXMB": []
-      },
-      {
-          "icono": "X.png",
-          "nombreRed": "X",
-          "aplicaPagoContraSaldo": "false",
-          "aplicaPagoEnLinea": "true",
-          "cantidadDatos": "10GB",
-          "cantidadDatosRecurrente": "",
-          "cantidadSMS": "No Aplica",
-          "cantidadSMSRecurrente": "",
-          "cantidadVoz": "No Aplica",
-          "cantidadVozRecurrente": "",
-          "catalogoPaqueteID": "101",
-          "catalogoRedSocial": [],
-          "categoriaPaqueteID": "1",
-          "codigoPaqueteGW": "50078",
-          "codigoPaqueteRecurrente": "",
-          "codigoPaqueteSaldo": "31199",
-          "descripcion": "Paquete Adicional de Datos 10GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 30 días. ",
-          "descripcionRecurrente": "",
-          "esPaqueteRecurrente": "false",
-          "nombre": "Datos Adicional 10GB",
-          "nombreRecurrente": "",
-          "precio": "15900",
-          "tipoPaqueteID": "1",
-          "tipoProductoID": "1",
-          "vigencia": "0",
-          "infoXMB": []
-      },
-      {
-          "icono": "X.png",
-          "nombreRed": "X",
-          "aplicaPagoContraSaldo": "false",
-          "aplicaPagoEnLinea": "true",
-          "cantidadDatos": "15GB",
-          "cantidadDatosRecurrente": "",
-          "cantidadSMS": "No Aplica",
-          "cantidadSMSRecurrente": "",
-          "cantidadVoz": "No Aplica",
-          "cantidadVozRecurrente": "",
-          "catalogoPaqueteID": "102",
-          "catalogoRedSocial": [],
-          "categoriaPaqueteID": "1",
-          "codigoPaqueteGW": "50079",
-          "codigoPaqueteRecurrente": "",
-          "codigoPaqueteSaldo": "31200",
-          "descripcion": "Paquete Adicional de Datos 15GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 30 días.",
-          "descripcionRecurrente": "",
-          "esPaqueteRecurrente": "false",
-          "nombre": "Datos Adicional 15GB",
-          "nombreRecurrente": "",
-          "precio": "24900",
-          "tipoPaqueteID": "1",
-          "tipoProductoID": "1",
-          "vigencia": "0",
-          "infoXMB": []
-      },
-      {
-          "icono": "X.png",
-          "nombreRed": "X",
-          "aplicaPagoContraSaldo": "false",
-          "aplicaPagoEnLinea": "true",
-          "cantidadDatos": "30GB",
-          "cantidadDatosRecurrente": "",
-          "cantidadSMS": "No Aplica",
-          "cantidadSMSRecurrente": "",
-          "cantidadVoz": "No Aplica",
-          "cantidadVozRecurrente": "",
-          "catalogoPaqueteID": "103",
-          "catalogoRedSocial": [],
-          "categoriaPaqueteID": "1",
-          "codigoPaqueteGW": "50081",
-          "codigoPaqueteRecurrente": "",
-          "codigoPaqueteSaldo": "31219",
-          "descripcion": "Paquete Adicional de Datos 30GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 30 días.",
-          "descripcionRecurrente": "",
-          "esPaqueteRecurrente": "false",
-          "nombre": "Datos Adicional 30GB",
-          "nombreRecurrente": "",
-          "precio": "39900",
-          "tipoPaqueteID": "1",
-          "tipoProductoID": "1",
-          "vigencia": "0",
-          "infoXMB": []
-      }
-  ],
     items: [
       {
         title: 'Mis paquetes',
@@ -160,6 +49,37 @@ Page({
         ]
       },
     ],
+    showPackageDescription: false,
+    showPaymentPopup: false,
+    indexOfferSelected: 0
+  },
+  openPackageDescription(event) {
+    this.setData({
+      showPackageDescription: true,
+      indexOfferSelected: event.target.dataset.indexOffers
+    })
+    console.log("event: ", event)
+  },
+  closePackageDescriptionPopup() {
+    this.setData({
+      showPackageDescription: false
+    })
+  },
+  closePaymentPopup() {
+    this.setData({
+      showPaymentPopup: false
+    })
+  },
+  openPaymentPopup(event) {
+    this.setData({
+      showPaymentPopup: true,
+      indexOfferSelected: event.target.dataset.indexOffers
+    })
+  },
+  openPaymentWebview() {
+    my.navigateTo({
+      url: "/pages/data-packages/payment-webview/payment-webview"
+    })
   },
   onLoad(options) {
     console.log(options)
@@ -180,6 +100,47 @@ Page({
       this.hideLoading({
         page: that,
       });
+      my.alert({
+        title: 'Error',
+        content: 'En este momento no podemos atender esta solicitud, intenta nuevamente',
+        buttonText: 'Cerrar',
+      });
+    });
+    
+  },
+
+  packagesItems(res) {
+    const that = this;
+    const packagesItemslist = res.data.response.listaCatalogo.paquetes.map(item => {
+      const { nombre, cantidadDatos, precio, descripcion } = item;
+      return { nombre, cantidadDatos, precio, descripcion }
+    })
+    console.log(packagesItemslist)
+    this.setData({
+      offers: packagesItemslist,
+    });
+    console.log(that.offers);
+    this.hideLoading();
+  },
+
+  GetPackagesCatalogue() {
+  requestApiGetPackagesCatalogue(this.data.urlOffers, this)
+    .then(res => {
+      
+      if (res.data.error == 1) {
+        this.setData({
+          title: 'Error',
+          content: 'En este momento no podemos atender esta solicitud, intenta nuevamente',
+          buttonText: 'Cerrar',
+        })
+      } else {
+        this.packagesItems(res)
+      }
+    })
+    .catch(error => {
+      /* this.hideLoading({
+        page: that,
+      }); */
       my.alert({
         title: 'Error',
         content: 'En este momento no podemos atender esta solicitud, intenta nuevamente',
@@ -215,5 +176,8 @@ Page({
     this.setData({
       current,
     });
+    if(current == 1) {
+      this.GetPackagesCatalogue()
+    }
   },
 });
