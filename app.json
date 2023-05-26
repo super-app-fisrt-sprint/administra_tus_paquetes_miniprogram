@@ -6,7 +6,8 @@
     
     "pages/data-packages/offers/offers",
     
-    "pages/index/index"
+    "pages/index/index",
+    "pages/data-packages/payment-webview/payment-webview"
     
   ],
   "window": {
