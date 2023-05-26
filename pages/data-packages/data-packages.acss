@@ -96,3 +96,99 @@
   align-items: center;
   flex-direction: column;
 }
+
+.lineNumberText {
+  margin-top: 9px;
+  color: #DC4C40;
+}
+
+.additionalDataText {
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.packageCostContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 19px;
+}
+
+.packageCostText {
+  font-weight: bold;
+}
+
+.packageCostValue {
+  color: #E3736A;
+}
+
+.dataContainer {
+  display: flex;
+  background-color: #E6E6E6;
+  height: 28px;
+  margin-top: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dataIcon {
+  width: 19px; 
+  height: 19px;
+}
+
+.dataTextContainer {
+  display: flex;
+  margin-left: 12px;
+  align-items: center;
+  font-weight: bold;
+}
+
+.dataValueText {
+  margin-right: 5px;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  margin-top: 11px;
+}
+
+.descriptionTitleText {
+  font-weight: bold;
+  margin-bottom: 13px;
+}
+
+.descriptionText {
+  line-height: 1;
+}
+
+.paymentMethodsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.x {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+.x::before,
+.x::after {
+  content: "";
+  position: absolute;
+  width: 30%;
+  height: 2px;
+  background-color: black;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #d52b1e;
+}
+.x::before {
+  transform: rotate(45deg);
+}
+.x::after {
+  transform: rotate(-45deg);
+}

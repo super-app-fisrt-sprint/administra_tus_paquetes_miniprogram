@@ -97,4 +97,60 @@
         {{tab.content}}
       </view>
      </view> -->
+
+    <modal-accept
+     visible="{{showPackageDescription}}"
+     content="Paquete Adicional de Datos 5GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 15 días"
+     primaryButtonText="Cerrar"
+     onClose="closePackageDescriptionPopup"
+     onPrimaryButtonTap="closePackageDescriptionPopup"
+    />
+    <modal-accept
+     visible="{{showPaymentPopup}}"
+     primaryButtonText="Pagar"
+     onPrimaryButtonTap="openPaymentWebview"
+     onClose="closePaymentPopup"
+    >
+      <view slot="content">
+        <view class="x" onTap="closePaymentPopup">
+        </view>
+        <view>
+          <text>
+            ¿Estás seguro que deseas adquirir el siguiente paquete y agregarlo al número?
+          </text>
+        </view>
+        <view class="lineNumberText">
+          <text>
+            {{lineNumber}}
+          </text>
+        </view>
+        <view class="additionalDataText">
+          <text>
+            Datos Adicional 5 GB
+          </text>
+        </view>
+        <view>
+          <text>Paquetes de Datos.</text>
+        </view>
+        <view class="packageCostContainer">
+          <text class="packageCostText">Costo paquete</text>
+          <text class="packageCostValue">$8.900</text>
+        </view>
+        <view class="dataContainer">
+          <view class="dataTextContainer">
+            <image class="dataIcon" src="/assets/icons/datos.svg"/>
+            <text class="dataText">Datos</text>
+          </view>
+          <text class="dataValueText">5GB</text>
+        </view>
+        <view class="descriptionContainer">
+          <text class="descriptionTitleText">Descripción</text>
+          <text class="descriptionText">Paquete Adicional de Datos 5GB para navegar a cualquier sitio de internet hasta que se agote su capacidad. Vigencia 15 días.</text>
+        </view>
+        <view class="paymentMethodsContainer">
+          <text style="font-weight: bold;">Métodos de pago:</text>
+          <text>Otros medios de pago</text>
+        </view>
+      </view>
+    </modal-accept>
 </view>

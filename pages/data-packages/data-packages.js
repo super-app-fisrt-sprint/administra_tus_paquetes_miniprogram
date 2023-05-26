@@ -160,6 +160,28 @@ Page({
         ]
       },
     ],
+    showPackageDescription: false,
+    showPaymentPopup: true,
+  },
+  openPackageDescription() {
+    this.setData({
+      showPackageDescription: true
+    })
+  },
+  closePackageDescriptionPopup() {
+    this.setData({
+      showPackageDescription: false
+    })
+  },
+  closePaymentPopup() {
+    this.setData({
+      showPaymentPopup: false
+    })
+  },
+  openPaymentWebview() {
+    my.navigateTo({
+      url: "/pages/data-packages/payment-webview/payment-webview"
+    })
   },
   onLoad(options) {
     console.log(options)
