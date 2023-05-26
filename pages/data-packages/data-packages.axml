@@ -54,22 +54,34 @@
               </view>
             </view>
 
+            <block a:for="{{offers}}" a:for-index="index" a:for-item="item">
             <view class="featuredPackageContainer">
               <view class="featuredPackageContainerContent">
-                <view>
-                  <text class="packageName"> {{ selectedPackage.packageName }}</text>
+                <view class="data-package-price">
+                  <view class="itemPackage">
+                    <text class="packageName"> {{item.nombre}} </text>
+                  </view>
+                  <view class="itemSeparator">
+                  </view>
+                  <view class="packageValueContainer itemPackage">
+                    <text class="packageValue">$ {{item.precio}}</text>
+                    <text class="packageValueText">Costo paquete</text>
+                  </view>
                 </view>
-                <view class="packageValueContainer">
-                  <text class="packageValue">${{ selectedPackage.packageValue }}</text>
-                  <text class="packageValueText">Costo paquete</text>
-                </view>
-                <view>
+                <view class="packageDescription">
                   <text class="packageDescriptionButton" onTap="openPackageDescription">
                     Descripción del paquete
                   </text>
                 </view>
-                <view>
-                  <text class="availabilityText">Disponibilidad:</text>
+                <view class="data-package-size">
+                  <view class="packageProduct">
+                    <text>Datos</text>
+                  </view>
+                  <view class="itemSeparator">
+                  </view>
+                  <view class="packageSize">
+                    <text>{{item.cantidadDatos}}</text>
+                  </view>
                 </view>
                 <block a:for="{{ selectedPackage.packageCountries }}" item="*item">
                   <view class="availableCountry">
@@ -77,8 +89,13 @@
                   </view>
                 </block>
               </view>
+              <custom-button
+                text="Otros medios de pago"
+                size="large"
+              >
+              </custom-button>
             </view>
-            
+            </block>
           </view>
         </view>
         </view>
