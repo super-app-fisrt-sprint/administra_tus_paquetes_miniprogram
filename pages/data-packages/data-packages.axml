@@ -20,7 +20,7 @@
               <text number-of-lines="1">Compensar</text>
             </view>
             <view style="color:var(--claro-color)">
-              {{nit}}
+              Nit. {{nit}}
             </view>
           </view>
           <view class="container-item content container-text-bold">
@@ -38,13 +38,15 @@
           
           <view class="content-main" a:if="{{ current === 0 }}">
             <view class="title-services">{{item.content}}</view>
-            <arrow-button
-              onTap="onNavigate"
-              style="background:#121D24; color: #fff"
-              imgSrc="{{ iconPackage }}"
-           >
-            {{packages}}
-            </arrow-button>
+            <view a:if="{{packages.length!=0 }}" class="container-image-scroll">
+              <arrow-button
+                onTap="openPackageInformation"
+                style="background:#121D24; color: #fff"
+                imgSrc="{{ iconPackage }}"
+            >
+              {{packages}}
+              </arrow-button>
+            </view>
           </view>
           <view class="content-main" a:if="{{ current === 1 }}">
             <view class="container-item content container-text-bold">
@@ -116,6 +118,14 @@
         {{tab.content}}
       </view>
      </view> -->
+
+    <modal-accept
+     visible="{{showPackageInformation}}"
+     content="No es posible visualizar la información sobre este paquete. Pronto encontrarás todo el detalle"
+     primaryButtonText="Aceptar"
+     onClose="closePackageDescriptionPopup"
+     onPrimaryButtonTap="closePackageDescriptionPopup"
+    />
 
     <modal-accept
      visible="{{showPackageDescription}}"
