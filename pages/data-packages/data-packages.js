@@ -1,18 +1,20 @@
 import { requestApiGetPackagesCatalogue } from "/services/GetCataloguePackages";
 import { requestApiGetCurrentPackageDetail } from "/services/GetCurrentPackageDetail";
+import { userInfo } from "/services/userInfoService";
 
 Page({
   data: {
     current: 0,
     tabIndex: 0,
-    nit: "900999998",
+    nit: "860066942",
+    urlUserInfo: "https://apiselfservice.co/api/index.php/v1/soap/LoginUsuarioApp.json",
     urlPackages: 'https://apiselfservice.co/M3/Empresas/Postpago/GetCurrentPackageDetail/',
     urlOffers: 'https://apiselfservice.co/api/index.php/v1/soap/ConsultarCatalogoPaqueteRecarga.json',
     lineNumber: getApp().globalData.lineNumber,
     packages: "",
     offers: [],
     showLoading : false,
-    iconPackage: "/assets/icons/redeem.svg",
+    iconPackage: "/assets/icons/gifticon.png",
     items: [
       {
         title: 'Mis paquetes',
@@ -49,9 +51,22 @@ Page({
         ]
       },
     ],
+    loginUser: {
+      data: {
+        clave: "Neoris.2023",
+        nombreUsuario: "angie.copete@neoris.com",
+        usuarioEmpresa: "1"
+      }
+    },
     showPackageDescription: false,
+    showPackageInformation: false,
     showPaymentPopup: false,
     indexOfferSelected: 0
+  },
+  openPackageInformation() {
+    this.setData({
+      showPackageInformation: true,
+    })
   },
   openPackageDescription(event) {
     this.setData({
@@ -62,7 +77,8 @@ Page({
   },
   closePackageDescriptionPopup() {
     this.setData({
-      showPackageDescription: false
+      showPackageDescription: false,
+      showPackageInformation: false
     })
   },
   closePaymentPopup() {
@@ -82,10 +98,11 @@ Page({
     })
   },
   onLoad(options) {
-    console.log(options)
-    this.showLoading();
-    const that = this;
-    requestApiGetCurrentPackageDetail(this.data.urlPackages, that)
+    this.getUserInfo();
+    //this.showLoading();
+    //const that = this;
+    this.getRequestApiGetCurrentPackageDetail();
+    /* requestApiGetCurrentPackageDetail(this.data.urlPackages, that)
     .then(res => {
       const packages = res.data.response
       console.log(packages.packageName)
@@ -105,7 +122,7 @@ Page({
         content: 'En este momento no podemos atender esta solicitud, intenta nuevamente',
         buttonText: 'Cerrar',
       });
-    });
+    }); */
     
   },
 
@@ -124,6 +141,8 @@ Page({
   },
 
   GetPackagesCatalogue() {
+    this.showLoading();
+    
   requestApiGetPackagesCatalogue(this.data.urlOffers, this)
     .then(res => {
       
@@ -172,12 +191,55 @@ Page({
     });
   },
 
+  getUserInfo() {
+    userInfo(this.data.urlUserInfo, this.data.loginUser)
+      .then((res) => {
+        console.log(res);
+        const itemUser = res.data.response.usuario;
+        const { DocumentNumber } = itemUser;
+        this.setData({
+          nit: DocumentNumber,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  getRequestApiGetCurrentPackageDetail() {
+    this.showLoading();
+    const that = this;
+    requestApiGetCurrentPackageDetail(this.data.urlPackages, that)
+    .then(res => {
+      const packages = res.data.response
+      console.log(packages.packageName)
+      this.setData({
+        packages: packages.packageName,
+      });
+      console.log(this.packages)
+      this.hideLoading({});
+      console.log("Package", this.data.packages);
+    })
+    .catch(error => {
+      this.hideLoading({
+        page: that,
+      });
+      my.alert({
+        title: 'Error',
+        content: 'En este momento no podemos atender esta solicitud, intenta nuevamente',
+        buttonText: 'Cerrar',
+      });
+    });
+  },
+
   onChange(current) {
     this.setData({
       current,
     });
     if(current == 1) {
       this.GetPackagesCatalogue()
+    } else {
+      this.getRequestApiGetCurrentPackageDetail()
     }
   },
 });

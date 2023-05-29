@@ -284,3 +284,7 @@
   color: white;
   font-size: small;
 }
+
+.ant-modal-body-footer-vertical-primary {
+  height: 42px;
+}
