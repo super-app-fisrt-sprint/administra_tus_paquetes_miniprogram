@@ -20,8 +20,16 @@
   flex-direction: row;
 } 
 
-.ant-tabs-content {
+/* .ant-tabs-content {
   padding: 0 10px;
+} */
+
+.tabs-view {
+  padding: 0 10px;
+}
+
+.tabs-view {
+  width: 100%;
 }
 
 .container-item.content {
@@ -58,10 +66,9 @@
   gap: 15rpx;
 }
 
-.ant-tabs-content .title-services {
+.title-services {
   color: #6e6c6c8c;
   margin-bottom: 16rpx;
-  padding: 0.5rem 0.1rem 0.2rem;
   font-size: 0.3rem;  
 }
 

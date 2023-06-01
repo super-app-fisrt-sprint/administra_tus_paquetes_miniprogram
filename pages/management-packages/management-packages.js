@@ -31,8 +31,9 @@ Page({
   },
   onLoad() {},
   onNavigate() {
-    my.redirectTo({
+    my.navigateTo({
       url: '/pages/data-packages/data-packages'
     })
-  }
+  },
+  
 });
