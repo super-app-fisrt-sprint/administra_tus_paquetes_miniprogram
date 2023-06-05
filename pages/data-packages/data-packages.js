@@ -97,33 +97,9 @@ Page({
       url: "/pages/data-packages/payment-webview/payment-webview"
     })
   },
-  onLoad(options) {
-    this.getUserInfo();
-    //this.showLoading();
-    //const that = this;
+  onLoad() {
+   /*  this.getUserInfo(); */
     this.getRequestApiGetCurrentPackageDetail();
-    /* requestApiGetCurrentPackageDetail(this.data.urlPackages, that)
-    .then(res => {
-      const packages = res.data.response
-      console.log(packages.packageName)
-      this.setData({
-        packages: packages.packageName,
-      });
-      console.log(this.packages)
-      this.hideLoading({});
-      console.log("Package", this.data.packages);
-    })
-    .catch(error => {
-      this.hideLoading({
-        page: that,
-      });
-      my.alert({
-        title: 'Error',
-        content: 'En este momento no podemos atender esta solicitud, intenta nuevamente',
-        buttonText: 'Cerrar',
-      });
-    }); */
-    
   },
 
   packagesItems(res) {
@@ -209,7 +185,7 @@ Page({
   getRequestApiGetCurrentPackageDetail() {
     this.showLoading();
     const that = this;
-    requestApiGetCurrentPackageDetail(this.data.urlPackages, that)
+    requestApiGetCurrentPackageDetail(this.data.urlPackages)
     .then(res => {
       const packages = res.data.response
       console.log(packages.packageName)
@@ -238,8 +214,6 @@ Page({
     });
     if(current == 1) {
       this.GetPackagesCatalogue()
-    } else {
-      this.getRequestApiGetCurrentPackageDetail()
     }
   },
 });
