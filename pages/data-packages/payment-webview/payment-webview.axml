@@ -1,1 +1,1 @@
-<web-view src="https://portalpagos.claro.com.co/index.php?view=vistas/personal/claro/estadoMsg.php&id_objeto=10031#no-back-button"></web-view>
+<web-view src="{{url}}"></web-view>
