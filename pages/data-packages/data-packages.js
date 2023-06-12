@@ -94,7 +94,7 @@ Page({
   },
   openPaymentWebview() {
     my.navigateTo({
-      url: "/pages/data-packages/payment-webview/payment-webview"
+      url: "/pages/data-packages/payment-webview/payment-webview?id=data-package&type=2",
     })
   },
   onLoad() {
